@@ -1,0 +1,95 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // Data tentang foto dan nama
+    final List<Map<String, String>> isi = [
+      {
+        "name": "Riska",
+        "Jabatan": "Founder",
+        "imageUrl":
+            "https://radartegal.com/wp-content/uploads/2023/07/Cuplikan-layar-2023-07-14-205356.jpg"
+      },
+      {
+        "name": "Sani'",
+        "Jabatan": "CEO",
+        "imageUrl":
+            "https://fin.co.id/upload/04236b5f41099233c5b7239bee80e206.jpg"
+      },
+      {
+        "name": "Atul",
+        "Jabatan": "CTO",
+        "imageUrl":
+            "https://i.pinimg.com/originals/4b/f7/8d/4bf78df0df632167c575937d9ffb01cc.jpg"
+      },
+      {
+        "name": "Hasanah",
+        "Jabatan": "Acounting",
+        "imageUrl":
+            "https://kamini.id/wp-content/uploads/2022/08/ootd-hijab-ke-alam-1_.webp"
+      },
+      {
+        "name": "Kaka",
+        "Jabatan": "Marketing",
+        "imageUrl":
+            "https://o-cdn-cas.sirclocdn.com/parenting/images/citra_kirana_OBuPfQ5.width-800.format-webp.webp"
+      },
+      // Tambahkan data lain sesuai kebutuhan Anda
+    ];
+    return MaterialApp(
+      title: 'Project Flutter',
+      home: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text('Project UJI COBA'),
+            backgroundColor: Colors.blue,
+            leading: IconButton(
+              icon: const Icon(Icons.home),
+              onPressed: () {},
+            ),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.menu),
+                onPressed: () {},
+              ),
+            ],
+          ),
+          body: ListView.builder(
+            itemCount: isi.length,
+            itemBuilder: (context, index) {
+              final item = isi[index];
+              return Padding(
+                padding: const EdgeInsets.only(
+                  top: 25,
+                ),
+                child: ListTile(
+                  leading: ClipOval(
+                    child: Image.network(
+                      item["imageUrl"] ?? "",
+                      width: 50, // Sesuaikan dengan ukuran yang Anda inginkan
+                      height: 50, // Sesuaikan dengan ukuran yang Anda inginkan
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  title: Text(
+                    item["name"] ?? "",
+                    maxLines: 5,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  subtitle: Text(
+                    item["Jabatan"] ?? "",
+                    maxLines: 10,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              );
+            },
+          )),
+    );
+  }
+}
